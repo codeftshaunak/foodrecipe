@@ -54,7 +54,6 @@ async function gatMealBySearch(term) {
 
 
 function addMeal(mealData, rendom = false) {
-        console.log(mealData);
         const meal = document.createElement('div');
         meal.classList.add('meals');
         meal.innerHTML = `              
@@ -74,10 +73,10 @@ function addMeal(mealData, rendom = false) {
                          `
 
 
-        //appendchild is doing something call replace one to another
-        mealsElement.appendChild(meal);
 
-        const btn = document.querySelector('.meal-body .btn-fav');
+
+        const btn = meal.querySelector('.meal-body .btn-fav');
+        console.log(btn);
 
         btn.addEventListener('click', () => {
                 if (btn.classList.contains('active')) {
@@ -89,6 +88,9 @@ function addMeal(mealData, rendom = false) {
                 }
                 fetchFavMeals();
         });
+
+        //appendchild is doing something call replace one to another
+        mealsElement.appendChild(meal);
 
         meal.addEventListener('click', () => {
                 showMealData(mealData)
