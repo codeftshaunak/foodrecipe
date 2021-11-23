@@ -1,10 +1,13 @@
 //Select Elements
 const mealsElement = document.getElementById('meal');
 const favcontain = document.getElementById('fav-contain');
-const searchBtn = document.getElementById('search');
-const searchTerm = document.getElementById('search-term');
 const popMeal = document.getElementById('meal-popup');
 const mealInfo = document.getElementById('meal-info');
+
+const searchBtn = document.getElementById('search');
+const searchTerm = document.getElementById('search-term');
+
+
 
 //function call
 rendomData();
@@ -17,9 +20,11 @@ fetchFavMeals();
 async function rendomData() {
         const resp = await fetch(
                 "https://www.themealdb.com/api/json/v1/1/random.php"
-        )
+        );
+
         const respData = await resp.json();
         const rendomMeals = respData.meals[0];
+
         addMeal(rendomMeals, true);
 }
 
@@ -28,18 +33,19 @@ async function getMealById(id) {
         const resp = await fetch(
                 "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id
         );
+
         const respData = await resp.json();
         const getmeal = respData.meals[0];
+
         return getmeal;
 }
-
-
 
 //Get Data By Search
 async function gatMealBySearch(term) {
         const resp = await fetch(
                 "https://www.themealdb.com/api/json/v1/1/search.php?s=" + term
         );
+
         const respData = await resp.json();
         const meals = respData.meals;
 
